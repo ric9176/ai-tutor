@@ -11,7 +11,7 @@ const openai = new OpenAI({
 export async function GET(res: NextApiResponse) {
   // Docs: https://platform.openai.com/docs/guides/gpt/chat-completions-api
 
-  const availableModels = await openai.models.list();
+  // const availableModels = await openai.models.list();
 
   return new NextResponse(JSON.stringify({ data: availableModels }), {
     status: 200,
