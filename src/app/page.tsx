@@ -3,12 +3,12 @@ import type { NextPage } from "next";
 import { useChat } from "ai/react";
 
 const Home: NextPage = () => {
-  const aiSdkChat = `/api/aiSdkChat`;
+  const openAIchat = `/api/openAIchat`;
   const langChainChat = `/api/chat`;
 
   const { messages, input, isLoading, stop, handleInputChange, handleSubmit } =
     useChat({
-      api: langChainChat,
+      api: openAIchat,
     });
 
   if (!isLoading) console.log(messages);
