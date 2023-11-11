@@ -14,10 +14,22 @@ import { useState } from "react";
 const Home: NextPage = () => {
   const [markdownText, setMarkdownText] = useState("");
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [file, setFile] = useState(null);
+
+  const handleFileChange = (e: any) => {
+    setFile(e.target.files[0]);
+  };
 
   // Handle file upload
-  const handleFileUpload = (event) => {
-    // Logic to handle file upload
+  const handleFileUpload = async (e: any) => {
+    e.preventDefault();
+    if (!file) return;
+    const formData = new FormData();
+    formData.append("file", file);
+    const response = await fetch("/api/upload", {
+      method: "POST",
+      body: formData,
+    });
   };
   return (
     <Container maxW="container.lg" pb={10}>
