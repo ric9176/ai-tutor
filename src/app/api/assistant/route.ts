@@ -1,4 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import { NextResponse } from "next/server";
+
 import OpenAI from "openai";
 
 const openai = new OpenAI({
@@ -11,5 +13,22 @@ export async function GET(res: NextApiResponse) {
 
   const availableModels = await openai.models.list();
 
-  res.status(200).json(availableModels);
+  return new NextResponse(JSON.stringify({ data: availableModels }), {
+    status: 200,
+  });
 }
+
+// export async function POST(request: NextRequest) {
+//   const { nameLookup }: MyData = await request.json();
+
+//   if (!nameLookup) {
+//     return new NextResponse(
+//       JSON.stringify({ name: "Please provide something to search for" }),
+//       { status: 400 }
+//     );
+//   }
+
+//   return new NextResponse(JSON.stringify({ answer: "John Doe" }), {
+//     status: 200,
+//   });
+// }
