@@ -7,6 +7,9 @@ import {
   VStack,
   Container,
   Text,
+  Input,
+  HStack,
+  Spacer,
   useDisclosure,
 } from "@chakra-ui/react";
 import { useState } from "react";
@@ -16,6 +19,30 @@ const Home: NextPage = () => {
   const [markdownText, setMarkdownText] = useState("");
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [file, setFile] = useState(null);
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [studentInput, setStudentInput] = useState("");
+  const [completion, setCompletion] = useState(null);
+  console.log("🚀 ~ file: page.tsx:26 ~ completion:", completion);
+
+  async function handleOnGenerateText(e: React.SyntheticEvent) {
+    e.preventDefault();
+    setStudentInput("");
+
+    setIsLoading(true);
+
+    const { data } = await fetch("/api/assistantExample", {
+      method: "POST",
+      body: JSON.stringify({
+        prompt: studentInput,
+      }),
+    }).then((r) => r.json());
+
+    setCompletion(data);
+
+    setIsLoading(false);
+    setStudentInput("");
+  }
 
   const handleFileChange = (e: any) => {
     setFile(e.target.files[0]);
@@ -34,8 +61,29 @@ const Home: NextPage = () => {
   };
   return (
     <Container maxW="container.lg" pb={10}>
-      {/* Main Content */}
-      <VStack flex={1} p={4} spacing={4} align="center">
+      <VStack spacing={2} w="60%" as="form" alignItems="center">
+        <Input
+          placeholder="Enter student answer"
+          value={studentInput}
+          onChange={(e) => setStudentInput(e.target.value)}
+          maxW="lg"
+          width="100%"
+        />
+        <Spacer />
+        <Button
+          type="submit"
+          isLoading={isLoading}
+          colorScheme="teal"
+          onClick={handleOnGenerateText}
+          px={8}
+        >
+          Evaluate Answer
+        </Button>
+        <ReactMarkdown>
+          {completion && completion.content[0].text.value}
+        </ReactMarkdown>
+      </VStack>{" "}
+      {/* <VStack flex={1} p={4} spacing={4} align="center">
         <Button onClick={onOpen}>Upload Files</Button>
         <input
           type="file"
@@ -79,13 +127,7 @@ Overall, Shakespeare shows Lady Macbeth as someone who goes through a big change
 | AO4                      | The spelling and punctuation are reasonably accurate, and the sentence structures are appropriate for clarity, making it a threshold performance.| 1 |
 | **AO4 Score:**           | | 1/4 |`}
         </ReactMarkdown>
-      </VStack>
-
-      {/* Sidebar */}
-      <Box w="300px" bg="gray.200" p={4}>
-        <Text>Placeholder Text for Sidebar</Text>
-        {/* Add more sidebar content here */}
-      </Box>
+      </VStack> */}
     </Container>
   );
 };
