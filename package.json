@@ -16,6 +16,7 @@
     "ai": "^2.2.22",
     "formidable": "^3.5.1",
     "framer-motion": "^10.16.4",
+    "fs": "^0.0.1-security",
     "langchain": "^0.0.186",
     "next": "14.0.2",
     "openai-edge": "^1.2.2",
