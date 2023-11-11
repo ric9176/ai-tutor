@@ -9,7 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/next-js": "^2.2.0",
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "ai": "^2.2.22",
+    "framer-motion": "^10.16.4",
     "langchain": "^0.0.186",
     "next": "14.0.2",
     "openai-edge": "^1.2.2",
