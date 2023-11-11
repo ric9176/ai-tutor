@@ -49,16 +49,16 @@ const Home: NextPage = () => {
   };
 
   // Handle file upload
-  const handleFileUpload = async (e: any) => {
-    e.preventDefault();
-    if (!file) return;
-    const formData = new FormData();
-    formData.append("file", file);
-    const response = await fetch("/api/upload", {
-      method: "POST",
-      body: formData,
-    });
-  };
+  // const handleFileUpload = async (e: any) => {
+  //   e.preventDefault();
+  //   if (!file) return;
+  //   const formData = new FormData();
+  //   formData.append("file", file);
+  //   const response = await fetch("/api/upload", {
+  //     method: "POST",
+  //     body: formData,
+  //   });
+  // };
   return (
     <Container maxW="container.lg" pb={10}>
       <VStack spacing={2} w="60%" as="form" alignItems="center">
@@ -79,9 +79,7 @@ const Home: NextPage = () => {
         >
           Evaluate Answer
         </Button>
-        <ReactMarkdown>
-          {completion && completion.content[0].text.value}
-        </ReactMarkdown>
+        <Text>{completion && completion.paper}</Text>
       </VStack>{" "}
     </Container>
   );
