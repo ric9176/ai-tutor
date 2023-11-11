@@ -5,18 +5,16 @@ import { NextRequest } from "next/server";
 
 export const runtime = "edge";
 
-export default async function handler(req: NextRequest) {
+export async function POST(req: NextRequest) {
   const { messages } = await req.json();
   const { stream, handlers } = LangChainStream();
 
   const llm = new ChatOpenAI({
-    openAIApiKey: process.env.OPENAI_API_KEY,
+    openAIApiKey: process.env.API_KEY,
     modelName: "gpt-3.5-turbo",
     streaming: true,
     temperature: 0.9,
   });
-
-  console.log("here");
 
   llm
     .call(
