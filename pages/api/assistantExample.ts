@@ -153,6 +153,7 @@ export default async function handler(
 
   // Get the last assistant message from the messages array
   const messages = await openai.beta.threads.messages.list(thread.id);
+  console.log("🚀 ~ file: assistantExample.ts:156 ~ messages:", messages);
 
   // Find the last message for the current run
   const lastMessageForRun = messages.data

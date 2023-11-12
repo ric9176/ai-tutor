@@ -108,24 +108,16 @@ const Home: NextPage = () => {
                     ></GradingCard>
                   )
                 )}
+              {completion &&
+                completion.score.length > 0 &&
+                completion.score.map(({ assesment_objective, total_score }) => (
+                  <BottomScores
+                    student_score={total_score}
+                    title={assesment_objective}
+                  ></BottomScores>
+                ))}
 
-              <Card borderWidth="1px" p={4}>
-                <FormControl id="ao1-ao3-score">
-                  <FormLabel>Score (AO1 - AO3)</FormLabel>
-                  <Input type="number" value={"scoreA03"} />
-                </FormControl>
-                <FormControl id="ao4-score" mt={4}>
-                  <FormLabel>Score (AO4)</FormLabel>
-                  <Input type="number" value={"scoreA04"} />
-                </FormControl>
-                <Button colorScheme="green" mt={4}>
-                  Save Score
-                </Button>
-              </Card>
-
-              <BottomScores student_score="X" title="Score (AO1 - AO3)"></BottomScores>
               <BottomButtons></BottomButtons>
-
             </VStack>
           </Skeleton>
         </GridItem>
