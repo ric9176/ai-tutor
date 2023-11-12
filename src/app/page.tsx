@@ -65,14 +65,19 @@ const Home: NextPage = () => {
   //     body: formData,
   //   });
   // };
+
   return (
     <>
       <Grid templateColumns="repeat(3, 1fr)" gap={6} p={5}>
         <GridItem colSpan={2}>
           <VStack align="stretch" spacing={5}>
             <Box>
-              <Heading size="md">Simon Smith</Heading>
-              <Text fontSize="sm">AQA English Literature 2019</Text>
+              <Heading size="md">
+                {(completion && completion.name) || "John Smith"}
+              </Heading>
+              <Text fontSize="sm">
+                {(completion && completion.paper) || "AQA English 2023"}
+              </Text>
             </Box>
             <Card p={2}>
               <Heading size="md">Section A: Question 2</Heading>
@@ -81,9 +86,22 @@ const Home: NextPage = () => {
                 play...
               </Text>
             </Card>
-            <Box>
-              <Textarea placeholder="Student's answer..." height="300px" />
-              <Button colorScheme="blue" mt={2}>
+            <Box as="form">
+              <Textarea
+                placeholder="Student's answer..."
+                size="md"
+                autoFocus
+                height="300px"
+                value={studentInput}
+                onChange={(e) => setStudentInput(e.target.value)}
+              />
+              <Button
+                type="submit"
+                mt={2}
+                isLoading={isLoading}
+                colorScheme="teal"
+                onClick={handleOnGenerateText}
+              >
                 Submit Answer
               </Button>
             </Box>
