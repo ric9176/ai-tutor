@@ -14,6 +14,7 @@ import {
   FormLabel,
   Card,
   Skeleton,
+  SkeletonText,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import GradingCard from "./components/GradingCard";
@@ -56,10 +57,7 @@ const Home: NextPage = () => {
                   {(completion && completion.name) || "John Smith"}
                 </Heading>
 
-                <Text fontSize="sm">
-                  {(completion && completion.paper) ||
-                    "AQA English Literature 2023"}
-                </Text>
+                <Text fontSize="sm">"AQA English Literature 2023"</Text>
               </Box>
               <Card p={2}>
                 <Heading size="md">Section A: Question 2</Heading>
@@ -95,7 +93,42 @@ const Home: NextPage = () => {
           </Card>
         </GridItem>
         <GridItem colSpan={1}>
-          <Skeleton isLoaded={!isLoading}>
+          {isLoading ? (
+            <>
+              <Box padding="5" boxShadow="lg" bg="white" mt={4}>
+                <SkeletonText
+                  mt="3"
+                  noOfLines={3}
+                  spacing="4"
+                  skeletonHeight="2"
+                />
+              </Box>
+              <Box padding="5" boxShadow="lg" bg="white" mt={4}>
+                <SkeletonText
+                  mt="3"
+                  noOfLines={3}
+                  spacing="4"
+                  skeletonHeight="2"
+                />
+              </Box>
+              <Box padding="5" boxShadow="lg" bg="white" mt={4}>
+                <SkeletonText
+                  mt="3"
+                  noOfLines={3}
+                  spacing="4"
+                  skeletonHeight="2"
+                />
+              </Box>
+              <Box padding="5" boxShadow="lg" bg="white" mt={4}>
+                <SkeletonText
+                  mt="3"
+                  noOfLines={3}
+                  spacing="4"
+                  skeletonHeight="2"
+                />
+              </Box>
+            </>
+          ) : (
             <VStack align="stretch" spacing={5}>
               {completion &&
                 completion.grading.length > 0 &&
@@ -119,7 +152,7 @@ const Home: NextPage = () => {
 
               <BottomButtons></BottomButtons>
             </VStack>
-          </Skeleton>
+          )}
         </GridItem>
       </Grid>
     </>
