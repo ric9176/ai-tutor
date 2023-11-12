@@ -108,7 +108,7 @@ const Home: NextPage = () => {
             </Card>
 
 
-            <GradingCard assessment_objective={"AO2"} comments={"The student shows ..."} level_achieved={"3"}></GradingCard>
+            <GradingCard assessment_objective={"AO2"} comments={"The student shows The student shows  The student shows  The student shows  The student shows  The student shows  The student shows ..."} level_achieved={"3"}></GradingCard>
 
 
             <Card p={2}>
