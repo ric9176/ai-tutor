@@ -5,28 +5,20 @@ import {
   Button,
   Textarea,
   VStack,
-  Container,
   Text,
   Input,
-  HStack,
-  Spacer,
-  useDisclosure,
   Grid,
   GridItem,
   Heading,
   FormControl,
   FormLabel,
   Card,
+  Skeleton,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import ReactMarkdown from "react-markdown";
 import GradingCard from "./components/GradingCard";
 
 const Home: NextPage = () => {
-  const [markdownText, setMarkdownText] = useState("");
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [file, setFile] = useState(null);
-
   const [isLoading, setIsLoading] = useState(false);
   const [studentInput, setStudentInput] = useState("");
   const [completion, setCompletion] = useState(null);
@@ -51,10 +43,6 @@ const Home: NextPage = () => {
     // setStudentInput("");
   }
 
-  const handleFileChange = (e: any) => {
-    setFile(e.target.files[0]);
-  };
-
   return (
     <>
       <Grid templateColumns="repeat(3, 1fr)" gap={6} p={5}>
@@ -73,8 +61,11 @@ const Home: NextPage = () => {
             <Card p={2}>
               <Heading size="md">Section A: Question 2</Heading>
               <Text mt={4}>
-                Lady Macbeth is a female character who changes during the
-                play...
+                Lady Macbeth is a female character who changes during the play."
+                Starting with this moment in the play explore how far you agree
+                with this view. Write about - how Shakespeare presents Lady
+                Macbeth in this extract - how far Shakespeare presents Lady
+                Macbeth as a female character who changes in the play as a whole
               </Text>
             </Card>
             <Box as="form">
@@ -99,52 +90,48 @@ const Home: NextPage = () => {
           </VStack>
         </GridItem>
         <GridItem colSpan={1}>
-          <VStack align="stretch" spacing={5}>
-            <Card p={2}>
-              <Heading size="sm">AO1</Heading>
-              <Text mt={2}>
-                The student demonstrates a clear understanding...
-              </Text>
-            </Card>
+          <Skeleton isLoaded={!isLoading}>
+            <VStack align="stretch" spacing={5}>
+              <Card p={2}>
+                <Heading size="sm">AO1</Heading>
+                <Text mt={2}>
+                  The student demonstrates a clear understanding...
+                </Text>
+              </Card>
 
+              <GradingCard
+                assessment_objective={"AO2"}
+                comments={"The student shows ..."}
+                level_achieved={"3"}
+              ></GradingCard>
 
-            <GradingCard assessment_objective={"AO2"} comments={"The student shows ..."} level_achieved={"3"}></GradingCard>
-
-
-            <Card p={2}>
-              <Heading size="sm">AO3</Heading>
-              <Text mt={2}>
-                The student shows understanding of the broader themes...
-              </Text>
-            </Card>
-            <Card p={2}>
-              <Heading size="sm">AO4</Heading>
-              <Text mt={2}>
-                The student’s answer is well-structured and coherent...
-              </Text>
-            </Card>
-            <Card borderWidth="1px" p={4}>
-              <FormControl id="ao1-ao3-score">
-                <FormLabel>Score (AO1 - AO3)</FormLabel>
-                <Input
-                  type="number"
-                  value={"scoreA03"}
-                  // onChange={(e) => setScoreAO1AO3(e.target.value)}
-                />
-              </FormControl>
-              <FormControl id="ao4-score" mt={4}>
-                <FormLabel>Score (AO4)</FormLabel>
-                <Input
-                  type="number"
-                  value={"scoreA04"}
-                  // onChange={(e) => setScoreAO4(e.target.value)}
-                />
-              </FormControl>
-              <Button colorScheme="green" mt={4}>
-                Save Score
-              </Button>
-            </Card>
-          </VStack>
+              <Card p={2}>
+                <Heading size="sm">AO3</Heading>
+                <Text mt={2}>
+                  The student shows understanding of the broader themes...
+                </Text>
+              </Card>
+              <Card p={2}>
+                <Heading size="sm">AO4</Heading>
+                <Text mt={2}>
+                  The student’s answer is well-structured and coherent...
+                </Text>
+              </Card>
+              <Card borderWidth="1px" p={4}>
+                <FormControl id="ao1-ao3-score">
+                  <FormLabel>Score (AO1 - AO3)</FormLabel>
+                  <Input type="number" value={"scoreA03"} />
+                </FormControl>
+                <FormControl id="ao4-score" mt={4}>
+                  <FormLabel>Score (AO4)</FormLabel>
+                  <Input type="number" value={"scoreA04"} />
+                </FormControl>
+                <Button colorScheme="green" mt={4}>
+                  Save Score
+                </Button>
+              </Card>
+            </VStack>
+          </Skeleton>
         </GridItem>
       </Grid>
     </>
