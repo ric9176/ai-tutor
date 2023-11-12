@@ -95,38 +95,16 @@ const Home: NextPage = () => {
         <GridItem colSpan={1}>
           {isLoading ? (
             <>
-              <Box padding="5" boxShadow="lg" bg="white" mt={4}>
-                <SkeletonText
-                  mt="3"
-                  noOfLines={3}
-                  spacing="4"
-                  skeletonHeight="2"
-                />
-              </Box>
-              <Box padding="5" boxShadow="lg" bg="white" mt={4}>
-                <SkeletonText
-                  mt="3"
-                  noOfLines={3}
-                  spacing="4"
-                  skeletonHeight="2"
-                />
-              </Box>
-              <Box padding="5" boxShadow="lg" bg="white" mt={4}>
-                <SkeletonText
-                  mt="3"
-                  noOfLines={3}
-                  spacing="4"
-                  skeletonHeight="2"
-                />
-              </Box>
-              <Box padding="5" boxShadow="lg" bg="white" mt={4}>
-                <SkeletonText
-                  mt="3"
-                  noOfLines={3}
-                  spacing="4"
-                  skeletonHeight="2"
-                />
-              </Box>
+              {[...Array(4).keys()].map((key) => (
+                <Box padding="5" boxShadow="lg" bg="white" mt={4}>
+                  <SkeletonText
+                    mt="3"
+                    noOfLines={3}
+                    spacing="4"
+                    skeletonHeight="2"
+                  />
+                </Box>
+              ))}
             </>
           ) : (
             <VStack align="stretch" spacing={5}>
