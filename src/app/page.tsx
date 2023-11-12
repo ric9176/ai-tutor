@@ -20,6 +20,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import ReactMarkdown from "react-markdown";
+import GradingCard from "./components/GradingCard";
 
 const Home: NextPage = () => {
   const [markdownText, setMarkdownText] = useState("");
@@ -105,12 +106,11 @@ const Home: NextPage = () => {
                 The student demonstrates a clear understanding...
               </Text>
             </Card>
-            <Card p={2}>
-              <Heading size="sm">AO2</Heading>
-              <Text mt={2}>
-                There is an effective analysis of Lady Macbeth's...
-              </Text>
-            </Card>
+
+
+            <GradingCard assessment_objective={"AO2"} comments={"The student shows ..."} level_achieved={"3"}></GradingCard>
+
+
             <Card p={2}>
               <Heading size="sm">AO3</Heading>
               <Text mt={2}>
