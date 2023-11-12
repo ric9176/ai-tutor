@@ -48,7 +48,7 @@ export default async function handler(
       {
         assesment_objective: "string",
         comments: "string",
-        level_achieved: "string",
+        level_achieved: "number",
       },
     ],
     score: [{ assesment_objective: "string", total_score: "string" }],
@@ -83,7 +83,22 @@ export default async function handler(
         assesment_objective: "A01",
         comments:
           "The student provides a personal response to the character of Lady Macbeth and her changes over the course of the play. There is a clear understanding and engagement with the text, although the analysis could be more developed with explicit references to the extract and text as a whole.",
-        level_achieved: "3",
+        level_achieved: 4,
+      },
+      {
+        assesment_objective: "A02",
+        comments: "The student...",
+        level_achieved: 3,
+      },
+      {
+        assesment_objective: "A03",
+        comments: "The student...",
+        level_achieved: 4,
+      },
+      {
+        assesment_objective: "A04",
+        comments: "The student...",
+        level_achieved: 3,
       },
     ],
     score: [{ title: "Score (A01 - A03)", total_score: "18/30" }],
@@ -119,37 +134,9 @@ export default async function handler(
     ### Student's Answer to Section A Question 1: ${prompt}
     IMPORTANT: return a valid JSON object, for example: ${JSON.stringify(
       exampleResponse
-    )} VALID JSON ONLY, START WITH {...}`,
+    )} VALID JSON ONLY, CALCULATE THE LEVEL ACHIEVED BASED ON THE MARKSCHEME DOCUMENT DATA`,
   });
 
-  //   console.lo("===");
-  console.log(`
-    You've been provided with an exam paper called techstars_hackathon_questionpaper and a mark scheme called techstars_hackathon_markscheme. When a student submits an answer to a question on the paper, follow these guidelines to respond:
-    Response Format:
-    #### Question
-    (Write full question)
-    ##Grading
-    (Write scoring for question)
-    #### Student's Answer
-    (Write student's answer)
-    #### Grading AO1-AO3
-    | **Assessment Objective** | **Comments** | **Grade** |
-    | ------------------------ | ------------ | --------- |
-    | AO1                      | (Comments against AO1) | (Grade for AO1) |
-    | AO2                      | (Comments against AO2) | (Grade for AO2) |
-    | AO3                      | (Comments against AO3) | (Grade for AO3) |
-    | **Average level across AO1-AO3** | | |
-    | **Score:**               | | |
-    #### Grading AO4:
-    | **Assessment Objective** | **Comments** | **Grade** |
-    | ------------------------ | ------------ | --------- |
-    | AO4                      | (Comments against AO4) | (Grade for AO4) |
-    | **AO4 Score:**           | | |
-    ### Student's Answer to Section A Question 1: ${prompt}
-    IMPORTANT: return a valid JSON object, for example: ${JSON.stringify(
-      exampleResponse
-    )} VALID JSON ONLY, START WITH {...}`);
-  console.log("---");
   // Use runs to wait for the assistant response and then retrieve it
   const run = await openai.beta.threads.runs.create(thread.id, {
     assistant_id: assistant.id,

@@ -92,33 +92,18 @@ const Home: NextPage = () => {
         <GridItem colSpan={1}>
           <Skeleton isLoaded={!isLoading}>
             <VStack align="stretch" spacing={5}>
-              <Card p={2}>
-                <Heading size="sm">AO1</Heading>
-                <Text mt={2}>
-                  The student demonstrates a clear understanding...
-                </Text>
-              </Card>
+              {completion &&
+                completion.grading.length > 0 &&
+                completion.grading.map(
+                  ({ assesment_objective, comments, level_achieved }) => (
+                    <GradingCard
+                      assessment_objective={assesment_objective}
+                      comments={comments}
+                      level_achieved={level_achieved}
+                    ></GradingCard>
+                  )
+                )}
 
-              <GradingCard
-                assessment_objective={"AO2"}
-                comments={
-                  "The student shows The student shows  The student shows  The student shows  The student shows  The student shows  The student shows ..."
-                }
-                level_achieved={"3"}
-              ></GradingCard>
-
-              <Card p={2}>
-                <Heading size="sm">AO3</Heading>
-                <Text mt={2}>
-                  The student shows understanding of the broader themes...
-                </Text>
-              </Card>
-              <Card p={2}>
-                <Heading size="sm">AO4</Heading>
-                <Text mt={2}>
-                  The student’s answer is well-structured and coherent...
-                </Text>
-              </Card>
               <Card borderWidth="1px" p={4}>
                 <FormControl id="ao1-ao3-score">
                   <FormLabel>Score (AO1 - AO3)</FormLabel>
