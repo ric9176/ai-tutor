@@ -54,18 +54,6 @@ const Home: NextPage = () => {
     setFile(e.target.files[0]);
   };
 
-  // Handle file upload
-  // const handleFileUpload = async (e: any) => {
-  //   e.preventDefault();
-  //   if (!file) return;
-  //   const formData = new FormData();
-  //   formData.append("file", file);
-  //   const response = await fetch("/api/upload", {
-  //     method: "POST",
-  //     body: formData,
-  //   });
-  // };
-
   return (
     <>
       <Grid templateColumns="repeat(3, 1fr)" gap={6} p={5}>
@@ -75,8 +63,10 @@ const Home: NextPage = () => {
               <Heading size="md">
                 {(completion && completion.name) || "John Smith"}
               </Heading>
+
               <Text fontSize="sm">
-                {(completion && completion.paper) || "AQA English 2023"}
+                {(completion && completion.paper) ||
+                  "AQA English Literature 2023"}
               </Text>
             </Box>
             <Card p={2}>
