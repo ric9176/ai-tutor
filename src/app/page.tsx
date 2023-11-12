@@ -17,6 +17,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import GradingCard from "./components/GradingCard";
+import BottomScores from "./components/BottomScores";
 
 const Home: NextPage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -117,6 +118,8 @@ const Home: NextPage = () => {
                   Save Score
                 </Button>
               </Card>
+
+              <BottomScores student_score="X" title="Score (AO1 - AO3)"></BottomScores>
             </VStack>
           </Skeleton>
         </GridItem>

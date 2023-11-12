@@ -1,19 +1,10 @@
 import {
-  Box,
-  Button,
-  Textarea,
-  VStack,
-  Container,
-  Text,
-  Input,
-  HStack,
-  Spacer,
-  useDisclosure,
-  Grid,
-  GridItem,
-  Heading,
-  Card,
-} from "@chakra-ui/react";
+    Box,
+    Text,
+    Heading,
+    Card,
+  } from "@chakra-ui/react";
+
 
 //@ts-ignore
 export default function GradingCard({
