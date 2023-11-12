@@ -17,15 +17,21 @@ import {
 
 
 //@ts-ignore
-export default function GradingCard( {assessment_objective, comments} ){
+export default function GradingCard( {assessment_objective, comments, level_achieved} ){
     
     return ( 
         <>
         <Card p={2}>
             <Heading size="sm">{assessment_objective}</Heading>
-            <Text mt={2}>
-                {comments}
-            </Text>
+
+            <Box display="flex" justifyContent="space-between">
+                <Text mt={2}>
+                    {comments}
+                </Text>
+            
+                <Text>Level {level_achieved}</Text>
+            </Box>
+
         </Card>
         </>
 )};
