@@ -19,8 +19,6 @@ import {
   Card,
 } from "@chakra-ui/react";
 import { useState } from "react";
-
-import GradingCard from "./components/gradingCard";
 import ReactMarkdown from "react-markdown";
 
 const Home: NextPage = () => {
@@ -117,16 +115,18 @@ const Home: NextPage = () => {
                 The student demonstrates a clear understanding...
               </Text>
             </Card>
-
             <Card p={2}>
               <Heading size="sm">AO2</Heading>
               <Text mt={2}>
                 There is an effective analysis of Lady Macbeth's...
               </Text>
             </Card>
-
-            <GradingCard comments={"the student accurately note that...."} assessment_objective={"AO3"}  ></GradingCard>
-
+            <Card p={2}>
+              <Heading size="sm">AO3</Heading>
+              <Text mt={2}>
+                The student shows understanding of the broader themes...
+              </Text>
+            </Card>
             <Card p={2}>
               <Heading size="sm">AO4</Heading>
               <Text mt={2}>
@@ -157,28 +157,6 @@ const Home: NextPage = () => {
           </VStack>
         </GridItem>
       </Grid>
-      <Container maxW="container.lg" pb={10}>
-        <VStack spacing={2} w="60%" as="form" alignItems="center">
-          <Input
-            placeholder="Enter student answer"
-            value={studentInput}
-            onChange={(e) => setStudentInput(e.target.value)}
-            maxW="lg"
-            width="100%"
-          />
-          <Spacer />
-          <Button
-            type="submit"
-            isLoading={isLoading}
-            colorScheme="teal"
-            onClick={handleOnGenerateText}
-            px={8}
-          >
-            Evaluate Answer
-          </Button>
-          <Text>{completion && JSON.stringify(completion)}</Text>
-        </VStack>{" "}
-      </Container>
     </>
   );
 };
