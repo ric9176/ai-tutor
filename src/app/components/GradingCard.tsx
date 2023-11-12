@@ -11,11 +11,28 @@ export default function GradingCard({
   assessment_objective,
   comments,
   level_achieved,
+  color_index
 }) {
+
+    function color_switcher(color_index){
+    switch (color_index) {
+        case 0:
+            return  "#FBC9CD";
+        case 1:
+            return  "#B3DAEE";
+        case 2:
+            return "#D8FCDD";
+        case 3:
+            return "#FBD8FC";
+
+        default:
+            return "#E2E8F0";
+    }};
+
   return (
     <>
       <Card p={2}>
-        <Heading size="sm" p={1}>
+        <Heading size="sm" p={1} backgroundColor={color_switcher(color_index)} maxWidth='44px'>
           {assessment_objective}
         </Heading>
 

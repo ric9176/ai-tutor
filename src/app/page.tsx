@@ -111,11 +111,12 @@ const Home: NextPage = () => {
               {completion &&
                 completion.grading.length > 0 &&
                 completion.grading.map(
-                  ({ assesment_objective, comments, level_achieved }) => (
+                  ({ assesment_objective, comments, level_achieved }, index) => (
                     <GradingCard
                       assessment_objective={assesment_objective}
                       comments={comments}
                       level_achieved={level_achieved}
+                      color_index={index}
                     ></GradingCard>
                   )
                 )}

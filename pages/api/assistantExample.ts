@@ -101,7 +101,7 @@ export default async function handler(
         level_achieved: 3,
       },
     ],
-    score: [{ title: "Score (A01 - A03)", total_score: "18/30" }],
+    score: [{ title: "Score (A01 - A03)", total_score: "18/30" }, { title: "Score (A04)", total_score: "2/4"}],
     student_answer: `Alright, so in this part of 'Macbeth,' we're looking at Lady Macbeth sleepwalking and talking in her sleep. It's pretty intense because she's freaking out about the murders she and Macbeth have been involved in. Like, she keeps trying to wash imaginary blood off her hands and talks about the smell of blood that perfumes can't cover up. This is totally different from how she was earlier in the play. Remember when she was all like, 'We gotta be tough and do what needs to be done'? Now, she's super guilt-ridden and scared.
     In the beginning, Lady Macbeth was really ambitious and kind of pushed Macbeth to do all those bad things. She was pretty strong and seemed like she could handle anything. But now, in this scene, she's falling apart. It's like the guilt is too much for her, and she can't deal with what they've done. So, yeah, she's changed a lot. She started off all tough and ended up being overwhelmed by guilt and fear.
     Overall, Shakespeare shows Lady Macbeth as someone who goes through a big change. At first, she's all about power and doing whatever it takes to get it. But then, she can't handle the consequences of her actions and totally breaks down. It's kind of a warning about ambition and guilt, I guess. So, I'd say I agree that she changes during the play, and it's a pretty dramatic change too.`,
