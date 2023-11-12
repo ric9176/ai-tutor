@@ -79,7 +79,7 @@ const Home: NextPage = () => {
         >
           Evaluate Answer
         </Button>
-        <Text>{completion && completion.paper}</Text>
+        <Text>{completion && JSON.stringify(completion)}</Text>
       </VStack>{" "}
     </Container>
   );
